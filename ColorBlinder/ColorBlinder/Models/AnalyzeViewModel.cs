@@ -2,7 +2,7 @@
 {
   public class AnalyzeViewModel
   {
-    public string FromImagePath { get; set; }
-    public string ToImagePath { get; set; }
+    public string OriginalImagePath { get; set; }
+    public string FilterImagePath { get; set; }
   }
 }
