@@ -51,7 +51,7 @@ namespace ColorBlinder.Controllers
     {
       AnalyzeResult result = null;
 
-      var uri = new Uri("http://10.33.168.147:8181/v1/screenfilter?url=" + url);
+      var uri = new Uri("http://10.33.168.147:8181/v1/screenfilter?url=" + url + "?staticfailovertest=1");
       _client.BaseAddress = uri;
       _client.DefaultRequestHeaders.Accept.Clear();
       _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
