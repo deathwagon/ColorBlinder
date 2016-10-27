@@ -12,6 +12,20 @@ namespace ColorBlinder.Controllers
     public string original { get; set; }
 
     public string Achromatomaly { get; set; }
+
+    public string Protanopia { get; set; }
+
+    public string Protanomaly { get; set; }
+
+    public string Deuteranopia { get; set; }
+
+    public string Deuteranomaly { get; set; }
+
+    public string Tritanopia { get; set; }
+
+    public string Tritanomaly { get; set; }
+
+    public string Achromatopsia { get; set; }
   }
 
   public class CbHttpClient

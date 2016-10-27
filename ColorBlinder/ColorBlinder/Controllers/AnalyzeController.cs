@@ -13,8 +13,17 @@ namespace ColorBlinder.Controllers
 
       var model = new AnalyzeViewModel
       {
+        FilterType = "Achromatomaly",
         OriginalImagePath = analyzeResult.original,
-        FilterImagePath = analyzeResult.Achromatomaly
+        FilterImagePath = analyzeResult.Achromatomaly,
+        AllFilterImagePaths = string.Join("|", "Achromatomaly="+analyzeResult.Achromatomaly,
+                                               "Achromatopsia=" + analyzeResult.Achromatopsia,
+                                               "Deuteranomaly=" + analyzeResult.Deuteranomaly,
+                                               "Deuteranopia=" + analyzeResult.Deuteranopia,
+                                               "Protanomaly=" + analyzeResult.Protanomaly,
+                                               "Protanopia=" + analyzeResult.Protanopia,
+                                               "Tritanomaly=" + analyzeResult.Tritanomaly,
+                                               "Tritanopia=" + analyzeResult.Tritanopia) 
       };
 
       return View(model);
