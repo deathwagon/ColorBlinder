@@ -1,19 +1,23 @@
 ﻿using System.Web.Mvc;
 using ColorBlinder.Models;
+using System.Threading.Tasks;
 
 namespace ColorBlinder.Controllers
 {
-    public class AnalyzeController : Controller
+  public class AnalyzeController : Controller
+  {
+    public async Task<ActionResult> Index(string url)
     {
-        public ActionResult Index(string url)
-        {
-          var model = new AnalyzeViewModel
-          {
-            FromImagePath = "source/path",
-            ToImagePath = "target/path"
-          };
+      var httpClient = new CbHttpClient();
+      var analyzeResult =  await httpClient.RunAsync(url);
 
-          return View(model);
-        }
+      var model = new AnalyzeViewModel
+      {
+        OriginalImagePath = analyzeResult.OriginalImagePath,
+        FilterImagePath = analyzeResult.FilterImagePath
+      };
+
+      return View(model);
     }
+  }
 }
