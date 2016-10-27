@@ -14,7 +14,7 @@ namespace ColorBlinder.Controllers
       var model = new AnalyzeViewModel
       {
         OriginalImagePath = analyzeResult.original,
-        FilterImagePath = analyzeResult.filterOne
+        FilterImagePath = analyzeResult.Achromatomaly
       };
 
       return View(model);

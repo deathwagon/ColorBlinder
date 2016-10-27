@@ -11,7 +11,7 @@ namespace ColorBlinder.Controllers
   {
     public string original { get; set; }
 
-    public string filterOne { get; set; }
+    public string Achromatomaly { get; set; }
   }
 
   public class CbHttpClient
