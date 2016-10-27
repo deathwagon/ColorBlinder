@@ -13,8 +13,8 @@ namespace ColorBlinder.Controllers
 
       var model = new AnalyzeViewModel
       {
-        OriginalImagePath = analyzeResult.OriginalImagePath,
-        FilterImagePath = analyzeResult.FilterImagePath
+        OriginalImagePath = analyzeResult.original,
+        FilterImagePath = analyzeResult.filterOne
       };
 
       return View(model);

@@ -3,23 +3,25 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace ColorBlinder.Controllers
 {
   public class AnalyzeResult
   {
-    public string OriginalImagePath { get; set; }
-    public string FilterImagePath { get; set; }
+    public string original { get; set; }
+
+    public string filterOne { get; set; }
   }
 
   public class CbHttpClient
   {
-    private static readonly HttpClient Client = new HttpClient();
+    private readonly HttpClient _client = new HttpClient();
 
-    static async Task<AnalyzeResult> GetFilterImage(string url)
+    private static async Task<AnalyzeResult> GetFilterImage(string url, HttpClient client)
     {
       AnalyzeResult result = null;
-      var response = await Client.GetAsync(url);
+      var response = await client.GetAsync(url);
 
       if (response.IsSuccessStatusCode)
       {
@@ -35,12 +37,12 @@ namespace ColorBlinder.Controllers
     {
       AnalyzeResult result = null;
 
-      var uri = new Uri("http://localhost:2974/v1/screenfilter?url=" + url);
-      Client.BaseAddress = uri;
-      Client.DefaultRequestHeaders.Accept.Clear();
-      Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+      var uri = new Uri("http://localhost:1905/v1/screenfilter?url=" + url);
+      _client.BaseAddress = uri;
+      _client.DefaultRequestHeaders.Accept.Clear();
+      _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-      result = await CbHttpClient.GetFilterImage(uri.ToString());
+      result = await GetFilterImage(uri.ToString(), _client);
 
       return result;
     }
