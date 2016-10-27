@@ -1,0 +1,14 @@
+﻿@using ColorBlinder.Models;
+
+@model AnalyzeViewModel
+
+@{
+  ViewBag.Title = "title";
+}
+
+<h2>@Model.FromImagePath</h2>
+<h2>@Model.ToImagePath</h2>
+
+<img src="@Model.FromImagePath" alt="From Image"/>
+<img src="@Model.ToImagePath" alt="To Image"/>
+
