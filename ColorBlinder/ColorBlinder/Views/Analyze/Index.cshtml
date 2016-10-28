@@ -7,6 +7,7 @@
 }
 
 <style type="text/css">
+  body { padding: 0; margin: 0; }
   .table {
     display: table;
     margin-top: 20px
@@ -17,9 +18,30 @@
     display: table-cell;
     float: left;
   }
+  #summary-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #summary-list li {
+    margin: 0; padding: 5px 10px;
+    border-top: 1px solid #fff;
+  }
+  #summary-toggle {
+    cursor:pointer;
+    margin: 0; padding: 5px 10px;
+    background: #ccc;
+  }
+  label,input {
+    cursor:pointer;
+    font-weight:normal;
+  }
 </style>
 
-<input type="hidden" id="all" value="@Model.AllFilterImagePaths">
+<div id="summary-toggle" onclick="toggleSummary()">Toggle Summary</div>
+<div id="summary">
+  <ul id="summary-list"></ul>
+</div>
 
 <div class="table">
   <div>
@@ -27,7 +49,9 @@
   </div>
   
   <div style="text-align: center">
-    <select id="filtertype" onchange='update("filtertype");'>
+    <label for="toggle-edges">Show Edges</label>
+    <input type="checkbox" id="toggle-edges" onclick="update()" />
+    <select id="filtertype" onchange='update();'>
       <option selected value="Achromatomaly">Achromatomaly</option>
       <option value="Protanopia">Protanopia</option>
       <option value="Protanomaly">Protanomaly</option>
@@ -37,25 +61,71 @@
       <option value="Tritanomaly">Tritanomaly</option>
       <option value="Achromatopsia">Achromatopsia</option>
     </select>
+    (<span id="score-display"></span>)
         
     <img class="left" style="padding-top:20px" id="filter-image" src="@Model.FilterImagePath" alt="Filtered Image"/>
   </div>
 </div>
 
 <script type="text/javascript">
-  function update(filtertype) {
-    var ddl = document.getElementById(filtertype);
+  var _entries = @Model.JsonData;
+  var _showEdges = false;
+
+  function update() {
+    var ddl = document.getElementById("filtertype");
     var selectedValue = ddl.options[ddl.selectedIndex].value;
 
-    var allImagePaths = document.getElementById("all").value;
-    var entries = allImagePaths.split("|");
+    var entry = _entries[selectedValue];
+    var original  = _entries['original'];
+    if (entry && entry.Url) {
+      if (document.getElementById('toggle-edges').checked) {
+        document.getElementById("filter-image").src = entry.EdgeUrl;
+        document.getElementById("original").src = original.EdgeUrl;
+      } else {
+        document.getElementById("filter-image").src = entry.Url;
+        document.getElementById("original").src = original.Url;
+      }
+      document.getElementById("score-display").innerHTML = entry.Score;
+    }
+  }
 
-    for (var i = 0; i < entries.length; i++) {
-      var subentries = entries[i].split("=");
-      if (subentries.length > 0 && subentries[0] === selectedValue) {
-        document.getElementById("filter-image").src = subentries[1];
-        break;
+  function buildSummary() {
+    var summaryUl = document.getElementById('summary-list');
+    for (var filter in _entries) {
+      if (_entries.hasOwnProperty(filter) && filter !== 'original') {
+        var entry = _entries[filter];
+        var li = document.createElement('li');
+        li.innerText = filter +': ' + entry.Score;
+        if (entry.Score < 0.85) {
+          li.style = "background-color: " + percentageToHsl(entry.Score, 0, 30);
+        } else {
+          
+          li.style = "background-color: " + percentageToHsl(entry.Score, 90, 120);
+        }
+        summaryUl.appendChild(li);
       }
     }
   }
+
+  var showSummary = true;
+  var summaryDiv = document.getElementById('summary');
+  function toggleSummary() {
+    showSummary = !showSummary;
+    if (showSummary) {
+      summaryDiv.style.display = 'block';
+    } else {
+      summaryDiv.style.display = 'none';
+    }
+  }
+
+  // http://stackoverflow.com/a/17527156/62590
+  // convert a number to a color using hsl
+  function percentageToHsl(percentage, hue0, hue1) {
+    var hue = (percentage * (hue1 - hue0)) + hue0;
+    return 'hsl(' + hue + ', 100%, 50%)';
+  }
+
+  toggleSummary();
+  buildSummary();
+  update();
 </script>
