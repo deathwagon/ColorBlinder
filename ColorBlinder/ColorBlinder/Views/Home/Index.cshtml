@@ -3,12 +3,113 @@
 }
 
 <div class="jumbotron">
-    <h1>Enter a web site</h1>
-    <p class="lead">Check your site for colorblind accessibility.</p>
-    <form action="/analyze" method="get" class="form-inline">
-        <div class="form-group">
-            <input type="text" name="url" value="https://www.godaddy.com" />
-        </div>
-        <button type="submit" class="btn btn-primary">Run Test</button>
-    </form>
+  <h1>Check Your Site for Colorblind Accessibility</h1>
+  <p class="lead">Enter a web site to see what colorblind indviduals see when they go to your site</p>
+  <form action="/analyze" method="get" class="form-inline" style="text-align: center;">
+    <div class="form-group input-group" style="display: table; width: 100%">
+      <div class="form-control-group" style="display: table; width: 100%">
+        <input type="text" class="searchInput form-control" style="width: 100%; display: table-cell;" name="url" value="https://www.godaddy.com"/>
+        <span class="input-group-btn" style="display: table-cell;">
+            <button type="submit" class="btn btn-primary">Run Test</button>
+          </span>
+      </div>
+    </div>
+  </form>
 </div>
+
+
+<div style="padding: 30px; padding-top: 0;">
+  <div class="col-xs-12 col-sm-4" style="text-align:center">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Normal.png"/>
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Achromatomaly.png" />
+  </div>
+  
+  <div class="col-xs-12 col-sm-8">
+    <h2>Color Blindness</h2> <strong>Color vision deficiency</strong>, or CVD affects approximately 1 in 12 men (8%) and 1 in 200 women in the world or about 5% of the total population. It takes up almost none of our conversation time when we are reviewing pages and having some simple automation to help consider this portion of our user base seems like a no brainer.
+    We wanted a quick way to be able to compare a webpage in a non colorblind format with a colorblind format and make sure that it could easily be used in automation for simplified testing and review. We also wanted to create a simple way of scoring if a page had too much color bleed that it would be difficult to understand for someone who was colorblind and flag it if there was a major problem.
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both;">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 80px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Achromatopsia.png"/>
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Achromatopsia</h2> Achromatopsia (ACHM), also known as total color blindness, is a medical syndrome that exhibits symptoms relating to at least five conditions. The term may refer to acquired conditions such as cerebral achromatopsia, also known as color agnosia, but it typically refers to an autosomal recessive congenital color vision condition, the inability to perceive color and to achieve satisfactory visual acuity at high light levels (typically exterior daylight). The syndrome is also present in an incomplete form which is more properly defined as dyschromatopsia. It is estimated to affect 1 in 40,000 live births worldwide.
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both; ">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Deuteranopia.png" />
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Deuteranopia</h2> Deuteranopia is a type of color vision deficiency where the green photoreceptors are absent. It affects hue discrimination in the same way as protanopia, but without the dimming effect. Like protanopia, it is hereditary, sex-linked, and found in about 1% of the male population.
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both; ">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Deuteranomaly.png" />
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Deuteranomaly</h2>Deuteranomaly caused by a similar shift in the green retinal receptors, is by far the most common type of color vision deficiency, mildly affecting red–green hue discrimination in 5% of European males. It is hereditary and sex-linked. The difference with deuteranopia is that in this case the green sensitive cones are not missing but malfunctioning.
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both; ">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Tritanopia.png" />
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Tritanopia</h2>Tritanopia is lacking the short-wavelength cones, those affected see short-wavelength colors (blue, indigo and a spectral violet) greenish and drastically dimmed, some of these colors even as black. Yellow is indistinguishable from pink, and purple colors are perceived as various shades of red. This form of color blindness is not sex-linked. Less than 1% of males and females.
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both; ">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Tritanomaly.png" />
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Tritanomaly</h2> Having a mutated form of the short-wavelength (blue) pigment. The short-wavelength pigment is shifted towards the green area of the spectrum. This is the rarest form of anomalous trichromacy color blindness. Unlike the other anomalous trichromacy color deficiencies, the mutation for this color blindness is carried on chromosome 7. Therefore, it is equally prevalent in both male & female populations. The OMIM gene code for this mutation is 304000 "Colorblindness, Partial Tritanomaly".
+  </div>
+</div>
+
+
+<div style="padding: 30px; padding-top: 0; clear: both;">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Protanomaly.png"/>
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Protanomaly</h2> Having a mutated form of the long-wavelength (red) pigment, whose peak sensitivity is at a shorter wavelength than in the normal retina, protanomalous individuals are less sensitive to red light than normal. This means that they are less able to discriminate colors, and they do not see mixed lights as having the same colors as normal observers. They also suffer from a darkening of the red end of the spectrum. This causes reds to reduce in intensity to the point where they can be mistaken for black. Protanomaly is a fairly rare form of color blindness, making up about 1% of the male population. Both protanomaly and deuteranomaly are carried on the X chromosome.
+  </div>
+</div>
+
+<div style="padding: 30px; padding-top: 0; clear: both; ">
+
+  <div class="col-xs-12 col-sm-4" style="text-align: center; padding-top: 50px;">
+    <img style="width: 200px; padding-bottom: 20px;" src="../../Content/images/Protanopia.png" />
+  </div>
+
+  <div class="col-xs-12 col-sm-8">
+    <h2>Protanopia</h2>Lacking the red cones for long-wavelength sensitive retinal cones, those with this condition are unable to distinguish between colors in the green–yellow–red section of the spectrum. For a protanope, the brightness of red, orange, and yellow are much reduced compared to normal. This dimming can be so pronounced that reds may be confused with black or dark gray, and red traffic lights may appear to be extinguished.
+  </div>
+</div>
+

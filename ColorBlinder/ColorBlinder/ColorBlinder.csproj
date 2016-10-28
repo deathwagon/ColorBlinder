@@ -211,6 +211,17 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\Achromatomaly.png" />
+    <Content Include="Content\images\Achromatopsia.png" />
+    <Content Include="Content\images\colordef.png" />
+    <Content Include="Content\images\Deuteranomaly.png" />
+    <Content Include="Content\images\Deuteranopia.png" />
+    <Content Include="Content\images\Normal.png" />
+    <Content Include="Content\images\Protanomaly.png" />
+    <Content Include="Content\images\Protanopia.png" />
+    <Content Include="Content\images\Tritanomaly.png" />
+    <Content Include="Content\images\Tritanopia.png" />
+    <Content Include="Content\uxcoresales.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -258,7 +269,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>
