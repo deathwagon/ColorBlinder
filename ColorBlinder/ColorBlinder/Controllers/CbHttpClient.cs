@@ -7,49 +7,59 @@ using Newtonsoft.Json;
 
 namespace ColorBlinder.Controllers
 {
+  public class AnalyzeResults
+  {
+    public AnalyzeResult Normal { get; set; }
+
+    public AnalyzeResult Achromatomaly { get; set; }
+
+    public AnalyzeResult Protanopia { get; set; }
+
+    public AnalyzeResult Protanomaly { get; set; }
+
+    public AnalyzeResult Deuteranopia { get; set; }
+
+    public AnalyzeResult Deuteranomaly { get; set; }
+
+    public AnalyzeResult Tritanopia { get; set; }
+
+    public AnalyzeResult Tritanomaly { get; set; }
+
+    public AnalyzeResult Achromatopsia { get; set; }
+  }
+
   public class AnalyzeResult
   {
-    public string original { get; set; }
+    public string Url { get; set; }
+    
+    public double? Score { get; set; }
 
-    public string Achromatomaly { get; set; }
-
-    public string Protanopia { get; set; }
-
-    public string Protanomaly { get; set; }
-
-    public string Deuteranopia { get; set; }
-
-    public string Deuteranomaly { get; set; }
-
-    public string Tritanopia { get; set; }
-
-    public string Tritanomaly { get; set; }
-
-    public string Achromatopsia { get; set; }
+    public string EdgeUrl => Url.Insert(Url.LastIndexOf('/'), "/edges");
   }
+
 
   public class CbHttpClient
   {
     private readonly HttpClient _client = new HttpClient();
 
-    private static async Task<AnalyzeResult> GetFilterImage(string url, HttpClient client)
+    private static async Task<AnalyzeResults> GetFilterImage(string url, HttpClient client)
     {
-      AnalyzeResult result = null;
+      AnalyzeResults result = null;
       var response = await client.GetAsync(url);
 
       if (response.IsSuccessStatusCode)
       {
         var responseBody = await response.Content.ReadAsStringAsync();
         var jsSerializer = new JavaScriptSerializer();
-        result = jsSerializer.Deserialize<AnalyzeResult>(responseBody);
+        result = jsSerializer.Deserialize<AnalyzeResults>(responseBody);
       }
 
       return result;
     }
 
-    public async Task<AnalyzeResult> RunAsync(string url)
+    public async Task<AnalyzeResults> RunAsync(string url)
     {
-      AnalyzeResult result = null;
+      AnalyzeResults result = null;
 
       var uri = new Uri("http://10.33.168.147:8181/v1/screenfilter?url=" + url + "?staticfailovertest=1");
       _client.BaseAddress = uri;
