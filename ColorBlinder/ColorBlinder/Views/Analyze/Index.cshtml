@@ -76,7 +76,7 @@
     var selectedValue = ddl.options[ddl.selectedIndex].value;
 
     var entry = _entries[selectedValue];
-    var original  = _entries['original'];
+    var original  = _entries['Normal'];
     if (entry && entry.Url) {
       if (document.getElementById('toggle-edges').checked) {
         document.getElementById("filter-image").src = entry.EdgeUrl;
@@ -92,11 +92,11 @@
   function buildSummary() {
     var summaryUl = document.getElementById('summary-list');
     for (var filter in _entries) {
-      if (_entries.hasOwnProperty(filter) && filter !== 'original') {
+      if (_entries.hasOwnProperty(filter) && filter !== 'Normal') {
         var entry = _entries[filter];
         var li = document.createElement('li');
         li.innerText = filter +': ' + entry.Score;
-        if (entry.Score < 0.85) {
+        if (entry.Score < 0.88) {
           li.style = "background-color: " + percentageToHsl(entry.Score, 0, 30);
         } else {
           

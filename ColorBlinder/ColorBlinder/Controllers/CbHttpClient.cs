@@ -9,7 +9,7 @@ namespace ColorBlinder.Controllers
 {
   public class AnalyzeResults
   {
-    public AnalyzeResult original { get; set; }
+    public AnalyzeResult Normal { get; set; }
 
     public AnalyzeResult Achromatomaly { get; set; }
 

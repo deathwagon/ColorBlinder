@@ -18,7 +18,7 @@ namespace ColorBlinder.Controllers
       var model = new AnalyzeViewModel
       {
         FilterType = "Achromatomaly",
-        OriginalImagePath = analyzeResult.original.Url,
+        OriginalImagePath = analyzeResult.Normal.Url,
         FilterImagePath = analyzeResult.Achromatomaly.Url,
         JsonData = new HtmlString(jsonData)
       };
