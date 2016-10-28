@@ -9,11 +9,17 @@
 
 </head>
 <body>
-    <div class="">
-        @RenderBody()
-    </div>
+  <div class="">
+    @RenderBody()
+  </div>
 
-    @Scripts.Render("~/bundles/jquery")
+<div class="disclaimer">
+  Informational content pertaining to the various types of color vision deficiency cited from <a href="https://en.wikipedia.org/wiki/Color_blindness">Wikipedia</a>.  
+  Tools used to generate images include the <a href="https://chrome.google.com/webstore/detail/colorblinding/dgbgleaofjainknadoffbjkclicbbgaa">ColorBlinding extension</a>, Google Chrome, and Selenium.  
+  Built in Microsoft .Net 4.5.2.
+</div>
+
+@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

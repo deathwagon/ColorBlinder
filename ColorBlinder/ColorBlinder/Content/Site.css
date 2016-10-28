@@ -11,3 +11,10 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+
+.disclaimer {
+    display: inline-block;
+    margin: 60px;
+    text-align: center;
+    font-size: 10px;
+}
